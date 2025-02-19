@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System with Live Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 600px; margin: auto; }
+        select, button { margin: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Vote on the Election Manifesto</h2>
+    <label for="voteOption">Select your vote:</label>
+    <select id="voteOption">
+        <option value="support">✅ Support</option>
+        <option value="oppose">❌ Oppose</option>
+    </select>
+    <button onclick="submitVote()">Submit Vote</button>
+
+    <h3>Voting Results</h3>
+    <canvas id="voteChart"></canvas>
+</div>
+
+<script>
+    let votes = { support: 0, oppose: 0 };
+    let voteChart;
+
+    // Initialize the chart when the page loads
+    function initializeChart() {
+        let ctx = document.getElementById('voteChart').getContext('2d');
+        voteChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Support', 'Oppose'],
+                datasets: [{
+                    data: [votes.support, votes.oppose],
+                    backgroundColor: ['green', 'red']
+                }]
+            }
+        });
+    }
+
+    // Submit vote and update chart
+    function submitVote() {
+        let voteOption = document.getElementById("voteOption").value;
+        votes[voteOption]++;
+
+        // Update the chart dynamically
+        voteChart.data.datasets[0].data = [votes.support, votes.oppose];
+        voteChart.update();
+
+        alert("Your vote has been submitted!");
+    }
+
+    // Load chart on window load
+    window.onload = initializeChart;
+</script>
+
+</body>
+</html>
