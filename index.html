@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarkar Watch - Government Promise Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #1abc9c;
+            color: white;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .filter-tabs button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filter-tabs button.active {
+            background-color: #f39c12;
+        }
+
+        .filter-tabs button:hover {
+            background-color: #34495e;
+        }
+
+        /* Policy List */
+        .policy-list {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .policy {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tag {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .tag.done { background-color: #27ae60; color: white; }
+        .tag.in-progress { background-color: #f39c12; color: white; }
+        .tag.broken { background-color: #e74c3c; color: white; }
+        .tag.not-started { background-color: #95a5a6; color: white; }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sarkar Watch</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Policies</a></li>
+                <li><a href="#">Vote</a></li>
+                <li><a href="#">Complaints</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Tracking Government Promises with Transparency</h2>
+        <p>Monitor policies, vote on their impact, and raise your concerns.</p>
+    </section>
+
+    <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterPolicies('all')">All</button>
+        <button class="filter-btn" onclick="filterPolicies('done')">✔ Done</button>
+        <button class="filter-btn" onclick="filterPolicies('in-progress')">⏳ In Progress</button>
+        <button class="filter-btn" onclick="filterPolicies('broken')">❌ Broken</button>
+        <button class="filter-btn" onclick="filterPolicies('not-started')">🚫 Not Started</button>
+    </div>
+
+    <section class="policy-list">
+        <h2>Latest Policies</h2>
+
+        <!-- 20 Dummy Policies -->
+        <div class="policy tag done" data-status="done"><span>✔ Done</span> Implement free Wi-Fi in public places</div>
+        <div class="policy tag in-progress" data-status="in-progress"><span>⏳ In Progress</span> Create 10 million jobs</div>
+        <div class="policy tag broken" data-status="broken"><span>❌ Broken</span> Reduce fuel prices</div>
+        <div class="policy tag not-started" data-status="not-started"><span>🚫 Not Started</span> Increase minimum wage</div>
+        <div class="policy tag done" data-status="done"><span>✔ Done</span> Launch solar energy programs</div>
+        <div class="policy tag in-progress" data-status="in-progress"><span>⏳ In Progress</span> Free school meals for all children</div>
+        <div class="policy tag broken" data-status="broken"><span>❌ Broken</span> Reduce tax for middle class</div>
+        <div class="policy tag not-started" data-status="not-started"><span>🚫 Not Started</span> Free health checkups for elderly</div>
+        <div class="policy tag done" data-status="done"><span>✔ Done</span> Build 500 new hospitals</div>
+        <div class="policy tag in-progress" data-status="in-progress"><span>⏳ In Progress</span> Free higher education</div>
+        <div class="policy tag broken" data-status="broken"><span>❌ Broken</span> Ban single-use plastics</div>
+        <div class="policy tag not-started" data-status="not-started"><span>🚫 Not Started</span> Improve public transport system</div>
+        <div class="policy tag done" data-status="done"><span>✔ Done</span> Increase pension for retirees</div>
+        <div class="policy tag in-progress" data-status="in-progress"><span>⏳ In Progress</span> Affordable housing scheme</div>
+        <div class="policy tag broken" data-status="broken"><span>❌ Broken</span> Reduce crime rates by 20%</div>
+        <div class="policy tag not-started" data-status="not-started"><span>🚫 Not Started</span> Introduce electric buses in cities</div>
+        <div class="policy tag done" data-status="done"><span>✔ Done</span> Lower prescription drug prices</div>
+        <div class="policy tag in-progress" data-status="in-progress"><span>⏳ In Progress</span> Universal healthcare coverage</div>
+        <div class="policy tag broken" data-status="broken"><span>❌ Broken</span> Reduce university tuition fees</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sarkar Watch | Transparency & Accountability</p>
+    </footer>
+
+    <script>
+        function filterPolicies(status) {
+            let policies = document.querySelectorAll('.policy');
+            let buttons = document.querySelectorAll('.filter-btn');
+
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            policies.forEach(policy => {
+                if (status === "all") {
+                    policy.style.display = "flex";
+                } else {
+                    policy.style.display = policy.getAttribute("data-status") === status ? "flex" : "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
